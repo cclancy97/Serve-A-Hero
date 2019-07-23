@@ -34,9 +34,20 @@ const changePassword = formData => {
     }
   })
 }
+const createHero = formData => {
+  return $.ajax({
+    url: config.apiUrl + '/heros',
+    data: formData,
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 
 module.exports = {
   changePassword,
+  createHero,
   signUp,
   signIn,
   signOut

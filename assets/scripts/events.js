@@ -35,10 +35,20 @@ const onChangePassword = event => {
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
+const onCreateHero = event => {
+  event.preventDefault()
+  const form = event.target
+  const formData = getFormFields(form)
+  console.log(formData)
+  api.createHero(formData)
+    .then(ui.createHeroSuccess)
+    .catch(ui.createHeroFailure)
+}
 
 module.exports = {
   onSignIn,
   onSignUp,
   onSignOut,
-  onChangePassword
+  onChangePassword,
+  onCreateHero
 }

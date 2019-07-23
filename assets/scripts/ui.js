@@ -1,3 +1,4 @@
+const store = require('./store')
 
 const successMessage = message => {
   $('#message').text(message)
@@ -14,19 +15,22 @@ const failureMessage = message => {
   $('form').trigger('reset')
 }
 const signUpSuccess = responseData => {
-  successMessage('You signed up successfully!')
+  successMessage('You signed up!')
 }
 const signUpFailure = responseData => {
   failureMessage('Sign up failed!')
 }
 const signInSuccess = responseData => {
-  successMessage('You signed in successfully!')
+  successMessage('You signed in!')
+  console.log(responseData)
+  store.user = responseData.user
+  console.log(store.user)
 }
 const signInFailure = () => {
   failureMessage('Sign in failed!')
 }
 const signOutSuccess = responseData => {
-  successMessage('You signed out successfully!')
+  successMessage('You signed out!')
 }
 const signOutFailure = responseData => {
   failureMessage('Sign out failed!')
@@ -36,6 +40,12 @@ const changePasswordSuccess = responseData => {
 }
 const changePasswordFailure = responseData => {
   failureMessage('Password not changed!')
+}
+const createHeroSuccess = responseData => {
+  successMessage('Hero created!')
+}
+const createHeroFailure = responseData => {
+  failureMessage('Error not created!')
 }
 
 module.exports = {
@@ -48,5 +58,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  createHeroSuccess,
+  createHeroFailure
 }
