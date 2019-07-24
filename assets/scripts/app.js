@@ -8,9 +8,14 @@
 const events = require('./events')
 
 $(() => {
+  $('#create-hero').hide()
+  $('#sign-out').hide()
+  $('#change-password').hide()
+  $('#get-hero').hide()
   $('#sign-up').on('submit', events.onSignUp)
   $('#sign-in').on('submit', events.onSignIn)
   $('#sign-out').on('submit', events.onSignOut)
   $('#change-password').on('submit', events.onChangePassword)
   $('#create-hero').on('submit', events.onCreateHero)
+  $('#get-hero').on('click', events.onGetHeroes)
 })

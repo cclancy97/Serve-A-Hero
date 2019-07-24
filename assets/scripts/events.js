@@ -44,11 +44,18 @@ const onCreateHero = event => {
     .then(ui.createHeroSuccess)
     .catch(ui.createHeroFailure)
 }
+const onGetHeroes = (event) => {
+  event.preventDefault()
+  api.getHero()
+    .then(ui.getHeroSuccess)
+    .catch(ui.getHeroFailure)
+}
 
 module.exports = {
   onSignIn,
   onSignUp,
   onSignOut,
   onChangePassword,
-  onCreateHero
+  onCreateHero,
+  onGetHeroes
 }

@@ -1,0 +1,38 @@
+{{#each heros as |hero|}}
+  {{log hero}}
+  <section data-id="{{hero.id}}">
+    <h6>Hero:</h6>
+    <h3>
+      {{limit hero.name 15}}
+    </h2>
+    <h6>Name:</h6>
+    <p>
+      <section>
+      {{#if hero.name}}
+        {{hero.name}}
+      {{else}}
+        No name provided.
+      {{/if}}
+    </section>
+    <section>
+      <h6>Location:</h6>
+      {{#if hero.location}}
+        {{hero.location}}
+      {{else}}
+        No location provided.
+      {{/if}}
+    </section>
+    <section>
+      <h6>Universe:</h6>
+      {{#if hero.universe}}
+        {{hero.universe}}
+      {{else}}
+        No universe provided.
+      {{/if}}
+    </section>
+    </p>
+    <button type="submit" class="btn btn-danger delete-hero">Remove</button>
+    <!-- {{> partial}} -->
+  </section>
+
+{{/each}}

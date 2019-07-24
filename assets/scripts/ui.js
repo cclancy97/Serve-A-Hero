@@ -1,4 +1,5 @@
 const store = require('./store')
+const heroTemplate = require('./templates/hero-list.handlebars')
 
 const successMessage = message => {
   $('#message').text(message)
@@ -25,6 +26,12 @@ const signInSuccess = responseData => {
   console.log(responseData)
   store.user = responseData.user
   console.log(store.user)
+  $('#change-password').show()
+  $('#create-hero').show()
+  $('#sign-out').show()
+  $('#get-hero').show()
+  $('#sign-in').hide()
+  $('#sign-up').hide()
 }
 const signInFailure = () => {
   failureMessage('Sign in failed!')
@@ -47,6 +54,14 @@ const createHeroSuccess = responseData => {
 const createHeroFailure = responseData => {
   failureMessage('Error not created!')
 }
+const getHeroSuccess = data => {
+  const showHeroesHtml = heroTemplate({ heros: data.heros })
+  $('.content').html(showHeroesHtml)
+  successMessage('Here are your heroes!')
+}
+const getHeroFailure = responseData => {
+  failureMessage('Error!')
+}
 
 module.exports = {
   successMessage,
@@ -60,5 +75,7 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   createHeroSuccess,
-  createHeroFailure
+  createHeroFailure,
+  getHeroSuccess,
+  getHeroFailure
 }

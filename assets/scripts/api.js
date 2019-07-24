@@ -44,11 +44,22 @@ const createHero = formData => {
     }
   })
 }
+const getHero = () => {
+  // make GET request to /books
+  return $.ajax({
+    url: config.apiUrl + '/heros',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 
 module.exports = {
   changePassword,
   createHero,
   signUp,
   signIn,
-  signOut
+  signOut,
+  getHero
 }
