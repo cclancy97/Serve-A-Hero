@@ -1,25 +1,30 @@
 {{#each heros as |hero|}}
-  {{log hero.id}}
   <div data-id="{{hero.id}}" class="grid-item">
     <table>
     <tr>
       <th>Hero:</th>
       <th>Location:</th>
       <th>Universe:</th>
+      <th>ID:</th>
     </tr>
     <tr>
+      {{#if hero.name}}
       <td>{{limit hero.name 15}}</td>
+      {{else}}
+        <td>{{hero.name}}</td>
+      {{/if}}
       {{#if hero.location}}
         <td>{{limit hero.location 15}}</td>
       {{else}}
-        No location provided.
+        <td>{{hero.location}}</td>
       {{/if}}
 
       {{#if hero.universe}}
         <td>{{limit hero.universe 15}}</td>
       {{else}}
-        No universe provided.
+        <td>{{hero.universe}}</td>
       {{/if}}
+      <td>{{hero.id}}</td>
     </tr>
     <br>
     <!-- {{> partial}} -->

@@ -2,6 +2,7 @@
 const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
+const store = require('./store')
 
 const onSignUp = event => {
   event.preventDefault()
@@ -39,7 +40,7 @@ const onCreateHero = event => {
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
-  console.log(formData)
+  store.hero = formData.hero
   api.createHero(formData)
     .then(() => onGetHeroes(event))
     .catch(ui.createHeroFailure)
@@ -52,7 +53,6 @@ const onGetHeroes = (event) => {
 }
 const onDeleteHero = event => {
   const heroId = $(event.target).closest('div').data('id')
-  console.log(heroId)
   event.preventDefault()
   api.deleteHero(heroId)
     .then(() => onGetHeroes(event))
@@ -62,7 +62,6 @@ const onUpdateHero = event => {
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
-  console.log(formData)
   api.updateHero(formData)
     .then(ui.getHeroSuccess)
     .then($('form').trigger('reset'))

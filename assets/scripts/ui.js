@@ -38,7 +38,8 @@ const signInSuccess = responseData => {
   $('#update-hero').show()
   $('#sign-in').hide()
   $('#sign-up').hide()
-  $('#login').text('Logout/Change-Password')
+  $('#login').text(' Logout/Change-Password ')
+  $('#myModal').modal('hide')
   hideMessaging()
 }
 const signInFailure = () => {
@@ -54,6 +55,10 @@ const signOutSuccess = responseData => {
   $('#update-hero').hide()
   $('#sign-in').show()
   $('#sign-up').show()
+  $('#login').text('Sign-Up/Login')
+  $('#heros').hide()
+  $('#myModal').modal('hide')
+  hideMessaging()
 }
 const signOutFailure = responseData => {
   failureMessage('Sign out failed!')
@@ -66,6 +71,7 @@ const changePasswordFailure = responseData => {
 }
 const createHeroSuccess = responseData => {
   successMessage('Hero created!')
+  $('form').trigger('reset')
 }
 const createHeroFailure = responseData => {
   failureMessage('Error not created!')
@@ -75,9 +81,10 @@ const getHeroSuccess = data => {
     heros: data.heros
   })
   $('.content').html(showHeroesHtml)
-  if (store.user.heros.length === 0) {
+  if (data.heros.length === 0) {
     $('#heros').text('You have no heroes :( Create some!')
-  } else if (store.user.heros.length !== 0) {
+    hideMessaging()
+  } if (data.heros.length !== 0) {
     $('#heros').text('Here are your heroes!')
   }
 }

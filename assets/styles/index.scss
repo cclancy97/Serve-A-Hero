@@ -13,6 +13,7 @@ body {
   background-image: url("public/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   color: $purple;
 }
 
@@ -51,10 +52,13 @@ th {
 .close {
   width: auto;
   border-radius: 5px;
+  color: white;
+  text-shadow: 0px;
+  background-color: $purple;
 }
 
 .close:hover {
-  background-color: white;
+  background-color: rgba(#682890,.54);
 }
 
 .modal-content {
