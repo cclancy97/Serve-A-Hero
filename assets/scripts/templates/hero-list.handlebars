@@ -1,27 +1,29 @@
 {{#each heros as |hero|}}
   {{log hero.id}}
-  <section data-id="{{hero.id}}">
-    <h6>Hero:</h6>
-    <form contenteditable="true">
-      {{limit hero.name 15}}
-    </form>
-    <p>
-      <h6> ID:{{hero.id}}</h6>
-      <h6>Location:</h6>
+  <div data-id="{{hero.id}}" class="grid-item">
+    <table>
+    <tr>
+      <th>Hero:</th>
+      <th>Location:</th>
+      <th>Universe:</th>
+    </tr>
+    <tr>
+      <td>{{limit hero.name 15}}</td>
       {{#if hero.location}}
-        <form>{{limit hero.location 15}}</form>
+        <td>{{limit hero.location 15}}</td>
       {{else}}
         No location provided.
       {{/if}}
-      <h6>Universe:</h6>
+
       {{#if hero.universe}}
-        <form>{{limit hero.universe 15}}</form>
+        <td>{{limit hero.universe 15}}</td>
       {{else}}
         No universe provided.
       {{/if}}
-    </p>
-    <button type="submit" class="btn btn-danger delete-hero">Remove</button>
+    </tr>
+    <br>
     <!-- {{> partial}} -->
-  </section>
-
+  </table>
+  <button type="submit" class="btn btn-danger delete-hero">Remove</button>
+  </div>
 {{/each}}

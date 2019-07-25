@@ -7,6 +7,7 @@
 
   <!-- Do not add `link` tags-->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet">
 
   <!-- Do not add `script` tags-->
   <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
@@ -17,6 +18,10 @@
   <header>
     Serve-A-Hero
   </header>
+  <button id='login' type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Sign-Up/Login</button>
+  <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
   <section>
     <form id='sign-up'>
       <h2>Sign Up</h2>
@@ -35,9 +40,6 @@
     </form>
     <br>
   </section>
-  <form id="sign-out">
-    <button class="btn btn-primary">Sign out</button>
-  </form>
   <section id="change-password">
     <form>
       <h2>Change Password</h2>
@@ -45,8 +47,17 @@
       <input type="password" name="passwords[new]" placeholder="New Password">
       <br>
       <button class="btn btn-primary">Change Password</button>
+      <form id="sign-out">
+        <button class="btn btn-primary">Sign out</button>
+      </form>
     </form>
   </section>
+  <div>
+      <button type="button" class="close" data-dismiss="modal">Close</button>
+    </div>
+</div>
+</div>
+</div>
   <h2 id="message"></h2>
   <form id='create-hero'>
     <h2>Create Your Hero!</h2>
@@ -55,14 +66,16 @@
     <input name="hero[universe]" type="text" placeholder="universe">
     <button class="btn btn-primary">Create Hero</button>
   </form>
-  <button id="get-hero" class="btn btn-primary">Get Heroes</button>
   <form id='update-hero'>
     <input name="hero[name]" type="text" placeholder="Name">
     <input name="hero[location]" type="text" placeholder="Location">
     <input name="hero[universe]" type="text" placeholder="Universe">
     <input name="hero[id]" type="text" placeholder="ID">
     <button class="btn btn-primary">Update</button>
+    <br>
+    <button id="get-hero" class="btn btn-primary">Get Heroes</button>
   </form>
+  <h3 id="heros"></h3>
   <div id="content" class="content"></div>
 </body>
 

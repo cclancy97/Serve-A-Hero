@@ -1,6 +1,63 @@
 @import '~bootstrap/scss/bootstrap';
+$purple: #6a24c7;
+
+.failure {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+body {
+  background: url("../public/images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $purple;
+}
+
+h2 {
+  font-family: 'Bangers', cursive;
+}
 
 header {
-  font-size: 25px;
+  font-size: 55px;
   text-align: center;
+  font-family: 'Bangers', cursive;
+}
+
+input {
+  border-radius: 5px;
+  border: $purple;
+}
+
+table {
+  width: 50%;
+  align-content: center;
+  border: 0.5px solid $purple;
+}
+
+td,
+th {
+  background-color: black;
+}
+
+.btn {
+  padding: 0.5px;
+  background-color: $purple;
+  border: $purple;
+}
+
+.close {
+  width: auto;
+  border-radius: 5px;
+}
+
+.close:hover {
+  background-color: white;
+}
+
+.modal-content {
+  background-color: rgba(#000,.37);
+  border: rgba(#000,.37);
 }

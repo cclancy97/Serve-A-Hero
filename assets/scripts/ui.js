@@ -15,6 +15,11 @@ const failureMessage = message => {
   // Clear getFormFields
   $('form').trigger('reset')
 }
+const hideMessaging = function () {
+  setTimeout(function () {
+    $('#message').html('')
+  }, 5000)
+}
 const signUpSuccess = responseData => {
   successMessage('You signed up!')
 }
@@ -33,6 +38,8 @@ const signInSuccess = responseData => {
   $('#update-hero').show()
   $('#sign-in').hide()
   $('#sign-up').hide()
+  $('#login').text('Logout/Change-Password')
+  hideMessaging()
 }
 const signInFailure = () => {
   failureMessage('Sign in failed!')
@@ -69,9 +76,9 @@ const getHeroSuccess = data => {
   })
   $('.content').html(showHeroesHtml)
   if (store.user.heros.length === 0) {
-    $('#message').text('You have no heroes :( Create some!')
+    $('#heros').text('You have no heroes :( Create some!')
   } else if (store.user.heros.length !== 0) {
-    successMessage('Here are your heroes!')
+    $('#heros').text('Here are your heroes!')
   }
 }
 const getHeroFailure = responseData => {
@@ -84,7 +91,7 @@ const deleteHeroFailure = responseData => {
   failureMessage('Error!')
 }
 const updateHeroSuccess = responseData => {
-  successMessage('Hero deleted!')
+  successMessage('Hero changed!')
 }
 const updateHeroFailure = responseData => {
   failureMessage('Error!')
@@ -108,5 +115,6 @@ module.exports = {
   deleteHeroSuccess,
   deleteHeroFailure,
   updateHeroSuccess,
-  updateHeroFailure
+  updateHeroFailure,
+  hideMessaging
 }

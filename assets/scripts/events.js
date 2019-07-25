@@ -51,7 +51,7 @@ const onGetHeroes = (event) => {
     .catch(ui.getHeroFailure)
 }
 const onDeleteHero = event => {
-  const heroId = $(event.target).closest('section').data('id')
+  const heroId = $(event.target).closest('div').data('id')
   console.log(heroId)
   event.preventDefault()
   api.deleteHero(heroId)
@@ -64,7 +64,8 @@ const onUpdateHero = event => {
   const formData = getFormFields(form)
   console.log(formData)
   api.updateHero(formData)
-    .then(ui.updateHeroSuccess)
+    .then(ui.getHeroSuccess)
+    .then($('form').trigger('reset'))
     .then(() => onGetHeroes(event))
     .catch(ui.updateHeroFailure)
 }
