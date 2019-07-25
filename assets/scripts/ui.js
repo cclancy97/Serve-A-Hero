@@ -28,9 +28,7 @@ const signUpFailure = responseData => {
 }
 const signInSuccess = responseData => {
   successMessage('You signed in!')
-  console.log(responseData)
   store.user = responseData.user
-  console.log(store.user.heros)
   $('#change-password').show()
   $('#create-hero').show()
   $('#sign-out').show()
@@ -93,6 +91,7 @@ const getHeroFailure = responseData => {
 }
 const deleteHeroSuccess = responseData => {
   successMessage('Hero deleted!')
+  hideMessaging()
 }
 const deleteHeroFailure = responseData => {
   failureMessage('Error!')

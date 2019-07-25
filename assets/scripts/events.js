@@ -43,6 +43,7 @@ const onCreateHero = event => {
   store.hero = formData.hero
   api.createHero(formData)
     .then(() => onGetHeroes(event))
+    .then(ui.createHeroSuccess)
     .catch(ui.createHeroFailure)
 }
 const onGetHeroes = (event) => {
@@ -56,6 +57,7 @@ const onDeleteHero = event => {
   event.preventDefault()
   api.deleteHero(heroId)
     .then(() => onGetHeroes(event))
+    .then(ui.deleteHeroSuccess)
     .catch(ui.deleteHeroFailure)
 }
 const onUpdateHero = event => {
