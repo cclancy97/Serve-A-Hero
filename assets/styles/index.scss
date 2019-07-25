@@ -17,6 +17,7 @@ body {
   color: $purple;
 }
 
+#heros,
 h2 {
   font-family: 'Bangers', cursive;
 }
@@ -41,27 +42,30 @@ table {
 td,
 th {
   background-color: black;
+  font-family: 'Bangers', cursive;
 }
 
+#login,
 .btn {
   padding: 0.5px;
   background-color: $purple;
   border: $purple;
 }
+.btn:hover,
+#login:hover {
+  background-color: rgba(#b705ff,.32);
+}
 
 .close {
   width: auto;
   border-radius: 5px;
-  color: white;
-  text-shadow: 0px;
-  background-color: $purple;
+  color: $purple;
+  opacity: 1;
 }
-
 .close:hover {
-  background-color: rgba(#682890,.54);
+  background-color: white;
 }
 
 .modal-content {
   background-color: rgba(#000,.37);
-  border: rgba(#000,.37);
 }

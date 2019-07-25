@@ -22,9 +22,11 @@ const hideMessaging = function () {
 }
 const signUpSuccess = responseData => {
   successMessage('You signed up!')
+  hideMessaging()
 }
 const signUpFailure = responseData => {
   failureMessage('Sign up failed!')
+  hideMessaging()
 }
 const signInSuccess = responseData => {
   successMessage('You signed in!')
@@ -33,7 +35,6 @@ const signInSuccess = responseData => {
   $('#create-hero').show()
   $('#sign-out').show()
   $('#get-hero').show()
-  $('#update-hero').show()
   $('#sign-in').hide()
   $('#sign-up').hide()
   $('#login').text(' Logout/Change-Password ')
@@ -42,6 +43,7 @@ const signInSuccess = responseData => {
 }
 const signInFailure = () => {
   failureMessage('Sign in failed!')
+  hideMessaging()
 }
 const signOutSuccess = responseData => {
   successMessage('You signed out!')
@@ -60,19 +62,24 @@ const signOutSuccess = responseData => {
 }
 const signOutFailure = responseData => {
   failureMessage('Sign out failed!')
+  hideMessaging()
 }
 const changePasswordSuccess = responseData => {
   successMessage('You changed your password!')
+  hideMessaging()
 }
 const changePasswordFailure = responseData => {
   failureMessage('Password not changed!')
+  hideMessaging()
 }
 const createHeroSuccess = responseData => {
   successMessage('Hero created!')
   $('form').trigger('reset')
+  hideMessaging()
 }
 const createHeroFailure = responseData => {
   failureMessage('Error not created!')
+  hideMessaging()
 }
 const getHeroSuccess = data => {
   const showHeroesHtml = heroTemplate({
@@ -81,13 +88,16 @@ const getHeroSuccess = data => {
   $('.content').html(showHeroesHtml)
   if (data.heros.length === 0) {
     $('#heros').text('You have no heroes :( Create some!')
+    $('#update-hero').hide()
     hideMessaging()
   } if (data.heros.length !== 0) {
     $('#heros').text('Here are your heroes!')
+    $('#update-hero').show()
   }
 }
 const getHeroFailure = responseData => {
   failureMessage('Error!')
+  hideMessaging()
 }
 const deleteHeroSuccess = responseData => {
   successMessage('Hero deleted!')
@@ -95,12 +105,15 @@ const deleteHeroSuccess = responseData => {
 }
 const deleteHeroFailure = responseData => {
   failureMessage('Error!')
+  hideMessaging()
 }
 const updateHeroSuccess = responseData => {
   successMessage('Hero changed!')
+  hideMessaging()
 }
 const updateHeroFailure = responseData => {
   failureMessage('Error!')
+  hideMessaging()
 }
 
 module.exports = {
