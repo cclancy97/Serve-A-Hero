@@ -45,13 +45,32 @@ const createHero = formData => {
   })
 }
 const getHero = () => {
-  // make GET request to /books
+  // make GET request to /heros
   return $.ajax({
     url: config.apiUrl + '/heros',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
+  })
+}
+const deleteHero = id => {
+  return $.ajax({
+    url: config.apiUrl + '/heros/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+const updateHero = data => {
+  return $.ajax({
+    url: config.apiUrl + '/heros/' + data.hero.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
   })
 }
 
@@ -61,5 +80,7 @@ module.exports = {
   signUp,
   signIn,
   signOut,
-  getHero
+  getHero,
+  deleteHero,
+  updateHero
 }

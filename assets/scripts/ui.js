@@ -25,11 +25,12 @@ const signInSuccess = responseData => {
   successMessage('You signed in!')
   console.log(responseData)
   store.user = responseData.user
-  console.log(store.user)
+  console.log(store.user.heros)
   $('#change-password').show()
   $('#create-hero').show()
   $('#sign-out').show()
   $('#get-hero').show()
+  $('#update-hero').show()
   $('#sign-in').hide()
   $('#sign-up').hide()
 }
@@ -38,6 +39,14 @@ const signInFailure = () => {
 }
 const signOutSuccess = responseData => {
   successMessage('You signed out!')
+  $('#change-password').hide()
+  $('#create-hero').hide()
+  $('#sign-out').hide()
+  $('#content').html('')
+  $('#get-hero').hide()
+  $('#update-hero').hide()
+  $('#sign-in').show()
+  $('#sign-up').show()
 }
 const signOutFailure = responseData => {
   failureMessage('Sign out failed!')
@@ -55,11 +64,29 @@ const createHeroFailure = responseData => {
   failureMessage('Error not created!')
 }
 const getHeroSuccess = data => {
-  const showHeroesHtml = heroTemplate({ heros: data.heros })
+  const showHeroesHtml = heroTemplate({
+    heros: data.heros
+  })
   $('.content').html(showHeroesHtml)
-  successMessage('Here are your heroes!')
+  if (store.user.heros.length === 0) {
+    $('#message').text('You have no heroes :( Create some!')
+  } else if (store.user.heros.length !== 0) {
+    successMessage('Here are your heroes!')
+  }
 }
 const getHeroFailure = responseData => {
+  failureMessage('Error!')
+}
+const deleteHeroSuccess = responseData => {
+  successMessage('Hero deleted!')
+}
+const deleteHeroFailure = responseData => {
+  failureMessage('Error!')
+}
+const updateHeroSuccess = responseData => {
+  successMessage('Hero deleted!')
+}
+const updateHeroFailure = responseData => {
   failureMessage('Error!')
 }
 
@@ -77,5 +104,9 @@ module.exports = {
   createHeroSuccess,
   createHeroFailure,
   getHeroSuccess,
-  getHeroFailure
+  getHeroFailure,
+  deleteHeroSuccess,
+  deleteHeroFailure,
+  updateHeroSuccess,
+  updateHeroFailure
 }

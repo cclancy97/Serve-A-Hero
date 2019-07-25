@@ -41,7 +41,7 @@ const onCreateHero = event => {
   const formData = getFormFields(form)
   console.log(formData)
   api.createHero(formData)
-    .then(ui.createHeroSuccess)
+    .then(() => onGetHeroes(event))
     .catch(ui.createHeroFailure)
 }
 const onGetHeroes = (event) => {
@@ -50,6 +50,24 @@ const onGetHeroes = (event) => {
     .then(ui.getHeroSuccess)
     .catch(ui.getHeroFailure)
 }
+const onDeleteHero = event => {
+  const heroId = $(event.target).closest('section').data('id')
+  console.log(heroId)
+  event.preventDefault()
+  api.deleteHero(heroId)
+    .then(() => onGetHeroes(event))
+    .catch(ui.deleteHeroFailure)
+}
+const onUpdateHero = event => {
+  event.preventDefault()
+  const form = event.target
+  const formData = getFormFields(form)
+  console.log(formData)
+  api.updateHero(formData)
+    .then(ui.updateHeroSuccess)
+    .then(() => onGetHeroes(event))
+    .catch(ui.updateHeroFailure)
+}
 
 module.exports = {
   onSignIn,
@@ -57,5 +75,7 @@ module.exports = {
   onSignOut,
   onChangePassword,
   onCreateHero,
-  onGetHeroes
+  onGetHeroes,
+  onDeleteHero,
+  onUpdateHero
 }
