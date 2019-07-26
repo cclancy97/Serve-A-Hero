@@ -104,7 +104,7 @@ const deleteHeroSuccess = responseData => {
   hideMessaging()
 }
 const deleteHeroFailure = responseData => {
-  failureMessage('Error!')
+  failureMessage('Error! Not Deleted')
   hideMessaging()
 }
 const updateHeroSuccess = responseData => {
@@ -112,7 +112,7 @@ const updateHeroSuccess = responseData => {
   hideMessaging()
 }
 const updateHeroFailure = responseData => {
-  failureMessage('Error!')
+  failureMessage('Error! Not updated')
   hideMessaging()
 }
 

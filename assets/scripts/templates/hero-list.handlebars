@@ -11,18 +11,18 @@
       {{#if hero.name}}
       <td>{{limit hero.name 15}}</td>
       {{else}}
-        <td>{{hero.name}}</td>
+        <td>None Given</td>
       {{/if}}
       {{#if hero.location}}
         <td>{{limit hero.location 15}}</td>
       {{else}}
-        <td>{{hero.location}}</td>
+        <td>None Given</td>
       {{/if}}
 
       {{#if hero.universe}}
         <td>{{limit hero.universe 15}}</td>
       {{else}}
-        <td>{{hero.universe}}</td>
+        <td>None Given</td>
       {{/if}}
       <td>{{hero.id}}</td>
     </tr>

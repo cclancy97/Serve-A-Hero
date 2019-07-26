@@ -65,7 +65,7 @@ const onUpdateHero = event => {
   const form = event.target
   const formData = getFormFields(form)
   api.updateHero(formData)
-    .then(ui.getHeroSuccess)
+    .then(ui.updateHeroSuccess)
     .then($('form').trigger('reset'))
     .then(() => onGetHeroes(event))
     .catch(ui.updateHeroFailure)
