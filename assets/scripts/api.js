@@ -73,6 +73,45 @@ const updateHero = data => {
     data
   })
 }
+const createVillain = formData => {
+  return $.ajax({
+    url: config.apiUrl + '/villains',
+    data: formData,
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+const getVillain = () => {
+  // make GET request to /heros
+  return $.ajax({
+    url: config.apiUrl + '/villains',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+const deleteVillain = id => {
+  return $.ajax({
+    url: config.apiUrl + '/villains/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+const updateVillain = data => {
+  return $.ajax({
+    url: config.apiUrl + '/villains/' + data.villain.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
 
 module.exports = {
   changePassword,
@@ -82,5 +121,9 @@ module.exports = {
   signOut,
   getHero,
   deleteHero,
-  updateHero
+  updateHero,
+  getVillain,
+  deleteVillain,
+  updateVillain,
+  createVillain
 }

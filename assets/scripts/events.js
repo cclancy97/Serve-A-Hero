@@ -70,6 +70,41 @@ const onUpdateHero = event => {
     .then(() => onGetHeroes(event))
     .catch(ui.updateHeroFailure)
 }
+const onCreateVillain = event => {
+  event.preventDefault()
+  const form = event.target
+  const formData = getFormFields(form)
+  store.villain = formData.villain
+  console.log(store.villain)
+  api.createVillain(formData)
+    .then(() => onGetVillains(event))
+    .then(ui.createVillainSuccess)
+    .catch(ui.createVillainFailure)
+}
+const onGetVillains = (event) => {
+  event.preventDefault()
+  api.getVillain()
+    .then(ui.getVillainSuccess)
+    .catch(ui.getVillainFailure)
+}
+const onDeleteVillain = event => {
+  const villainId = $(event.target).closest('div').data('id')
+  event.preventDefault()
+  api.deleteVillain(villainId)
+    .then(() => onGetVillains(event))
+    .then(ui.deleteVillainSuccess)
+    .catch(ui.deleteVillainFailure)
+}
+const onUpdateVillain = event => {
+  event.preventDefault()
+  const form = event.target
+  const formData = getFormFields(form)
+  api.updateVillain(formData)
+    .then(ui.updateVillainSuccess)
+    .then($('form').trigger('reset'))
+    .then(() => onGetVillains(event))
+    .catch(ui.updateVillainFailure)
+}
 
 module.exports = {
   onSignIn,
@@ -79,5 +114,9 @@ module.exports = {
   onCreateHero,
   onGetHeroes,
   onDeleteHero,
-  onUpdateHero
+  onUpdateHero,
+  onCreateVillain,
+  onGetVillains,
+  onDeleteVillain,
+  onUpdateVillain
 }

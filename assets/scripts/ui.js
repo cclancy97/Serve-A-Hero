@@ -1,5 +1,6 @@
 const store = require('./store')
 const heroTemplate = require('./templates/hero-list.handlebars')
+const villainTemplate = require('./templates/villains.handlebars')
 
 const successMessage = message => {
   $('#message').text(message)
@@ -31,10 +32,13 @@ const signUpFailure = responseData => {
 const signInSuccess = responseData => {
   successMessage('You signed in!')
   store.user = responseData.user
+  console.log(store.user)
   $('#change-password').show()
   $('#create-hero').show()
+  $('#create-villain').show()
   $('#sign-out').show()
   $('#get-hero').show()
+  $('#get-villain').show()
   $('#sign-in').hide()
   $('#sign-up').hide()
   $('#login').text(' Logout/Change-Password ')
@@ -49,14 +53,18 @@ const signOutSuccess = responseData => {
   successMessage('You signed out!')
   $('#change-password').hide()
   $('#create-hero').hide()
+  $('#create-villain').hide()
   $('#sign-out').hide()
   $('#content').html('')
   $('#get-hero').hide()
   $('#update-hero').hide()
+  $('#get-villain').hide()
+  $('#update-villain').hide()
   $('#sign-in').show()
   $('#sign-up').show()
   $('#login').text('Sign-Up/Login')
   $('#heros').hide()
+  $('#villains').hide()
   $('#myModal').modal('hide')
   hideMessaging()
 }
@@ -115,6 +123,50 @@ const updateHeroFailure = responseData => {
   failureMessage('Error! Not updated')
   hideMessaging()
 }
+const createVillainSuccess = responseData => {
+  successMessage('Villain created!')
+  $('form').trigger('reset')
+  hideMessaging()
+}
+const createVillainFailure = responseData => {
+  failureMessage('Error not created!')
+  hideMessaging()
+}
+const getVillainSuccess = data => {
+  console.log(data)
+  const showVillainsHtml = villainTemplate({
+    villains: data.villains
+  })
+  $('.villain-content').html(showVillainsHtml)
+  if (data.villains.length === 0) {
+    $('#villains').text('You have no villains :( Create some!')
+    $('#update-villain').hide()
+    hideMessaging()
+  } if (data.villains.length !== 0) {
+    $('#villains').text('Here are your villains!')
+    $('#update-villain').show()
+  }
+}
+const getVillainFailure = responseData => {
+  failureMessage('Error!')
+  hideMessaging()
+}
+const deleteVillainSuccess = responseData => {
+  successMessage('Villain deleted!')
+  hideMessaging()
+}
+const deleteVillainFailure = responseData => {
+  failureMessage('Error! Not Deleted')
+  hideMessaging()
+}
+const updateVillainSuccess = responseData => {
+  successMessage('Villain changed!')
+  hideMessaging()
+}
+const updateVillainFailure = responseData => {
+  failureMessage('Error! Not updated')
+  hideMessaging()
+}
 
 module.exports = {
   successMessage,
@@ -135,5 +187,13 @@ module.exports = {
   deleteHeroFailure,
   updateHeroSuccess,
   updateHeroFailure,
+  createVillainSuccess,
+  createVillainFailure,
+  getVillainSuccess,
+  getVillainFailure,
+  deleteVillainSuccess,
+  deleteVillainFailure,
+  updateVillainSuccess,
+  updateVillainFailure,
   hideMessaging
 }

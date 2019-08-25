@@ -1,0 +1,34 @@
+{{#each villains as |villain|}}
+  <div data-id="{{villain.id}}" class="grid-item">
+    <table>
+    <tr>
+      <th>Villain:</th>
+      <th>Location:</th>
+      <th>Universe:</th>
+      <th>ID:</th>
+    </tr>
+    <tr>
+      {{#if villain.name}}
+      <td>{{limit villain.name 15}}</td>
+      {{else}}
+        <td>None Given</td>
+      {{/if}}
+      {{#if villain.location}}
+        <td>{{limit villain.location 15}}</td>
+      {{else}}
+        <td>None Given</td>
+      {{/if}}
+
+      {{#if villain.universe}}
+        <td>{{limit villain.universe 15}}</td>
+      {{else}}
+        <td>None Given</td>
+      {{/if}}
+      <td>{{villain.id}}</td>
+    </tr>
+    <br>
+    <!-- {{> partial}} -->
+  </table>
+  <button type="submit" class="btn btn-danger delete-villain">Remove</button>
+  </div>
+{{/each}}
