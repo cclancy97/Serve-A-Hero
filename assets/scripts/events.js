@@ -75,7 +75,6 @@ const onCreateVillain = event => {
   const form = event.target
   const formData = getFormFields(form)
   store.villain = formData.villain
-  console.log(store.villain)
   api.createVillain(formData)
     .then(() => onGetVillains(event))
     .then(ui.createVillainSuccess)

@@ -32,7 +32,6 @@ const signUpFailure = responseData => {
 const signInSuccess = responseData => {
   successMessage('You signed in!')
   store.user = responseData.user
-  console.log(store.user)
   $('#change-password').show()
   $('#create-hero').show()
   $('#create-villain').show()
@@ -133,7 +132,6 @@ const createVillainFailure = responseData => {
   hideMessaging()
 }
 const getVillainSuccess = data => {
-  console.log(data)
   const showVillainsHtml = villainTemplate({
     villains: data.villains
   })
