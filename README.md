@@ -2,8 +2,8 @@
 
 * * *
 ## _Description_:
-A SPA where you can create,read,update and destroy resources from a database on my own [api](https://github.com/cclancy97/FullStack)
-Once logged in, you can enter your hero details in the forms and it will display on the screen
+A SPA where you can create,read,update and destroy resources(heroes and villains) from a database on my own [api](https://github.com/cclancy97/FullStack)
+Once logged in, you can enter your hero/villain details in the forms and it will display on the screen
 ***
 ## _Wireframes/User-Stories/ERD_:
 
